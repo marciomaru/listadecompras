@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
-import { Background } from '../Background';
+import { theme } from '../../global/styles/theme';
+
 
 export const styles = StyleSheet.create({
     container: {
@@ -85,5 +86,14 @@ export const styles = StyleSheet.create({
         marginHorizontal: 5,
         paddingHorizontal: 8,
         justifyContent: 'space-between',
-    }
+    },
+    overlay: {
+        flex: 1,
+        backgroundColor: theme.colors.overlay,
+    },
+    modalContainer: {
+        width: 300,
+        height: 200,
+        backgroundColor: 'red'
+    },
 });

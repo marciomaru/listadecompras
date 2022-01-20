@@ -4,12 +4,11 @@ import React, {
     useContext,
     useState
 } from 'react';
-import { List, ListProps } from '../components/List'
-import { listas } from '../temporaryDB/TemporaryDB'
-
+import { ListProps } from '../components/List';
+import { listas } from '../temporaryDB/TemporaryDB';
 
 type List = {
-    itens: ListProps[];
+    items: ListProps[];
 }
 
 type ListContextData = {
@@ -21,22 +20,16 @@ type ListContextProps = {
     children: ReactNode
 }
 
+export const ListContext = createContext({} as ListContextData);
 
-
-export const ListContext = createContext({} as ListContextData)
-
-function ListProvider({ children }: ListContextProps) {
+function ItemProvider({ children }: ListContextProps) {
     const [listId, setListId] = useState(0)
-    const listSelected: number = listId
-    const [list, setlist] = useState<List>({
-        itens: listas.filter((listSelect) => listSelect.id === listSelected)
-    } as List)
+    const list = {
+        items: listas.filter((listSelect) => listSelect.id === listId)
+    }
 
     return (
-        <ListContext.Provider value={{
-            list,
-            setListId
-        }}>
+        <ListContext.Provider value={{ list, setListId }}>
             {children}
         </ListContext.Provider>
     )
@@ -48,6 +41,6 @@ function useList() {
 }
 
 export {
-    ListProvider,
+    ItemProvider,
     useList,
 }

@@ -7,5 +7,7 @@ export const theme = {
         listPrimary: '#c8e6c9',
         listDark: '#97b498',
         listLight: '#fbfffc',
+
+        overlay: 'rgba(0,0,0,0.7)'
     }
 }
