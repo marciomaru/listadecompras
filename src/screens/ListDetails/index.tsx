@@ -14,6 +14,8 @@ import { useList } from '../../hooks/list';
 import { Header } from '../../components/Header';
 import { theme } from '../../global/styles/theme';
 import { listas } from '../../temporaryDB/TemporaryDB';
+import { ReturnIcon } from '../../components/ReturnIcon';
+
 
 
 export function ListDetails() {
@@ -30,6 +32,9 @@ export function ListDetails() {
                 <Header
                     title={items.nameList}
                     background={theme.colors.itemDark}
+                    actionReturn={
+                        <ReturnIcon />
+                    }
                 />
                 <FlatList
                     data={items.itens}

@@ -16,7 +16,8 @@ import { Header } from '../../components/Header';
 import { Background } from '../../components/Background';
 import { theme } from '../../global/styles/theme';
 import { StatusBar } from 'react-native';
-
+import { useNavigation } from '@react-navigation/native';
+import { ReturnIcon } from '../../components/ReturnIcon';
 
 
 
