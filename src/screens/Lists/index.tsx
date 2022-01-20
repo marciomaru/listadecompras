@@ -63,6 +63,9 @@ export function Lists() {
                             >
                                 <DeleteIcon
                                     background={theme.colors.listPrimary}
+                                    borderRadius={10}
+                                    width={50}
+                                    height={70}
                                 />
                             </Pressable>
                         </View>

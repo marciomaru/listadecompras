@@ -32,9 +32,8 @@ export function ListDetails() {
                 <Header
                     title={items.nameList}
                     background={theme.colors.itemDark}
-                    actionReturn={
-                        <ReturnIcon />
-                    }
+                    actionReturn={true}
+                    actionIcons={true}
                 />
                 <FlatList
                     data={items.itens}

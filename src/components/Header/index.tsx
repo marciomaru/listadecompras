@@ -5,6 +5,8 @@ import {
     Text,
     View
 } from 'react-native';
+import { DeleteIcon } from '../DeleteIcon';
+import { EditIcon } from '../EditIcon';
 import { ReturnIcon } from '../ReturnIcon';
 
 import { styles } from './styles';
@@ -12,22 +14,36 @@ import { styles } from './styles';
 type Props = {
     title: string;
     background: string;
-    actionReturn?: ReactNode
+    actionReturn?: boolean;
+    actionIcons?: boolean;
 }
 
-export function Header({ title, background, actionReturn }: Props) {
+export function Header({
+    title,
+    background,
+    actionReturn,
+    actionIcons, }: Props) {
     return (
         <View style={[styles.container, { backgroundColor: background }]}>
             {
                 actionReturn &&
-                <View>
-                    {actionReturn}
-                </View>
+                <ReturnIcon />
             }
 
             <Text style={styles.title}>
                 {title}
             </Text>
+
+            {
+                actionIcons &&
+                <View style={styles.actionIcons}>
+                    <EditIcon />
+                    <DeleteIcon
+                        background={background}
+                    />
+                </View>
+            }
+
         </View>
     );
 }

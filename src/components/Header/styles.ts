@@ -12,5 +12,10 @@ export const styles = StyleSheet.create({
     title: {
         fontSize: 20,
         color: 'black',
+    },
+    actionIcons: {
+        flexDirection: 'column',
+        alignItems: 'center',
+        paddingVertical: 8.5,
     }
 });
