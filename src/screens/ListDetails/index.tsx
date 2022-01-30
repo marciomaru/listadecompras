@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode, useState } from 'react';
 
 import {
     StatusBar,
@@ -8,23 +8,34 @@ import {
 import { styles } from './styles';
 import { Item, ItemProps } from '../../components/Item';
 import { ListDivider } from '../../components/ListDivider';
-import { FlatList } from 'react-native-gesture-handler';
+import { BorderlessButton, FlatList } from 'react-native-gesture-handler';
 import { ListProps } from '../../components/List';
 import { useList } from '../../hooks/list';
 import { Header } from '../../components/Header';
 import { theme } from '../../global/styles/theme';
 import { listas } from '../../temporaryDB/TemporaryDB';
 import { ReturnIcon } from '../../components/ReturnIcon';
+import { DeleteIcon } from '../../components/DeleteIcon';
+import { CheckIcon } from '../../components/CheckIcon';
+
 
 
 
 export function ListDetails() {
     const { list } = useList()
     const items = list.items[0]
+    const [itemChecked, setItemChecked] = useState(false)
+
+    function handleCheckItem() {
+        itemChecked ? setItemChecked(false) : setItemChecked(true)
+    }
 
     return (
         <>
-            <View style={styles.container} >
+            <View
+                //style={itemChecked ? styles.item : styles.itemChecked}
+                style={styles.item}
+            >
                 <StatusBar
                     barStyle='dark-content'
                     backgroundColor={theme.colors.itemLight}
@@ -36,12 +47,21 @@ export function ListDetails() {
                     actionIcons={true}
                 />
                 <FlatList
-                    data={items.itens}
+                    data={items.items}
                     keyExtractor={item => item.id}
                     renderItem={({ item }) => (
-                        <Item
-                            data={item}
-                        />
+                        <View
+                            style={{
+                                flexDirection: 'row',
+                                borderColor: 'yellow',
+                                borderWidth: 2
+                            }}
+                        >
+                            <Item
+                                data={item}
+                                background={theme.colors.itemPrimary}
+                            />
+                        </View>
                     )}
                     ItemSeparatorComponent={() => <ListDivider />}
                 />

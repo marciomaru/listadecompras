@@ -69,25 +69,25 @@ export const listas: ListProps[] = [
     {
         id: 1,
         nameList: 'lista de compras do dia 1',
-        itens: listaItems,
+        items: listaItems,
         date: handleDate(new Date())
     },
     {
         id: 2,
         nameList: 'lista de compras do dia 2',
-        itens: listaItems2,
+        items: listaItems2,
         date: handleDate(new Date())
     },
     {
         id: 3,
         nameList: 'lista de compras do dia 3',
-        itens: listaItems3,
+        items: listaItems3,
         date: handleDate(new Date())
     },
     {
         id: 4,
         nameList: 'lista de compras do dia 4',
-        itens: listaItems4,
+        items: listaItems4,
         date: handleDate(new Date())
     },
 

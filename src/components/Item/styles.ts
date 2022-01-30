@@ -4,15 +4,15 @@ import { theme } from '../../global/styles/theme';
 
 export const styles = StyleSheet.create({
     container: {
-        width: 400,
+        width: 340,
         height: 70,
         flexDirection: 'row',
         justifyContent: 'space-between',
         backgroundColor: '#c9d8e8',
         alignSelf: 'center',
         alignItems: 'center',
-        opacity: 0.5,
-        borderRadius: 10
+        borderTopLeftRadius: 10,
+        borderBottomLeftRadius: 10,
     },
     containerChecked: {
         width: 400,
@@ -22,17 +22,9 @@ export const styles = StyleSheet.create({
         backgroundColor: '#c9d8e8',
         alignSelf: 'center',
         alignItems: 'center',
-        borderWidth: 2,
+        borderWidth: 3,
         borderColor: 'green',
         borderRadius: 10,
-    },
-    iconsArea: {
-        width: 50,
-        height: 70,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        paddingVertical: 7,
     },
     Edit: {
         color: 'black',
@@ -96,4 +88,13 @@ export const styles = StyleSheet.create({
         height: 200,
         backgroundColor: 'red'
     },
+    icon: {
+        backgroundColor: theme.colors.itemPrimary,
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: 50,
+        height: 70,
+        borderTopEndRadius: 10,
+        borderBottomEndRadius: 10
+    }
 });

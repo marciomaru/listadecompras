@@ -1,14 +1,12 @@
 import React from "react";
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { Primeira } from "../screens/Primeira";
 import { Lists } from "../screens/Lists";
 import { ListDetails } from "../screens/ListDetails";
 
 
 export type RootStackParamList = {
     Lists: undefined;
-    Primeira: undefined;
     ListDetails: undefined;
 };
 
@@ -27,10 +25,6 @@ export function AuthRoutes() {
             <Screen
                 name="Lists"
                 component={Lists}
-            />
-            <Screen
-                name="Primeira"
-                component={Primeira}
             />
             <Screen
                 name="ListDetails"

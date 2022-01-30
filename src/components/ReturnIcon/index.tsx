@@ -23,7 +23,7 @@ export function ReturnIcon() {
 
     return (
         <BorderlessButton
-            style={styles.returnIcon}
+            //style={styles.returnIcon}
             onPress={handleReturnScreen}
         >
             <AntDesign

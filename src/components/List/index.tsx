@@ -19,7 +19,7 @@ type listDetailsScreenProp = StackNavigationProp<RootStackParamList>;
 export type ListProps = {
     id: number;
     nameList: string;
-    itens: ItemProps[];
+    items: ItemProps[];
     date: string;
 }
 

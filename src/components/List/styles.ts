@@ -4,15 +4,15 @@ import { theme } from '../../global/styles/theme';
 
 export const styles = StyleSheet.create({
     container: {
-        width: 350,
+        width: 320,
         height: 70,
         flexDirection: 'row',
         justifyContent: 'space-between',
         backgroundColor: theme.colors.listPrimary,
         alignSelf: 'center',
         alignItems: 'center',
-        borderTopLeftRadius: 10,
-        borderBottomLeftRadius: 10,
+        borderTopStartRadius: 10,
+        borderBottomStartRadius: 10,
     },
     listDetailButton: {
         width: 350,

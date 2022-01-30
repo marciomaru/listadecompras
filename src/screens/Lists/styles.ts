@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
         borderBottomWidth: 2
     },
     border: {
-        marginLeft: -3,
+        marginLeft: 3,
         width: 30,
         height: 30,
         borderWidth: 15,
@@ -30,5 +30,14 @@ export const styles = StyleSheet.create({
     },
     checked: {
         opacity: 1
+    },
+    icon: {
+        backgroundColor: theme.colors.listPrimary,
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: 50,
+        height: 70,
+        borderTopEndRadius: 10,
+        borderBottomEndRadius: 10
     }
 });

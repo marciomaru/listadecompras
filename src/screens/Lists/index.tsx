@@ -4,20 +4,18 @@ import {
     Pressable,
     View
 } from 'react-native';
-import { FlatList, RectButton, RectButtonProps } from 'react-native-gesture-handler';
-import { DeleteIcon } from '../../components/DeleteIcon';
-import { List, ListProps } from '../../components/List';
+import { FlatList, BorderlessButton } from 'react-native-gesture-handler';
+import { FontAwesome } from '@expo/vector-icons';
+import { List } from '../../components/List';
 import { ListDivider } from '../../components/ListDivider';
-import { RootStackParamList } from '../../routes/auth.routes';
 import { styles } from './styles';
 import { listas } from '../../temporaryDB/TemporaryDB';
-import { handleDate } from '../../util/DateFormatter';
 import { Header } from '../../components/Header';
 import { Background } from '../../components/Background';
 import { theme } from '../../global/styles/theme';
 import { StatusBar } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { ReturnIcon } from '../../components/ReturnIcon';
+import { DeleteIcon } from '../../components/DeleteIcon';
+
 
 
 
@@ -58,16 +56,12 @@ export function Lists() {
                             <List
                                 data={item}
                             />
-                            <Pressable
-                                onPress={() => handleDeleteList(item.id)}
-                            >
+                            <View style={styles.icon} >
                                 <DeleteIcon
-                                    background={theme.colors.listPrimary}
-                                    borderRadius={10}
-                                    width={50}
-                                    height={70}
+                                    id={item.id}
+                                    handleDelete={handleDeleteList}
                                 />
-                            </Pressable>
+                            </View>
                         </View>
                     )}
                     ItemSeparatorComponent={() => <ListDivider />}

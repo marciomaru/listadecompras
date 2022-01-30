@@ -8,30 +8,35 @@ import { styles } from './styles';
 import { BorderlessButton } from 'react-native-gesture-handler';
 
 type Props = {
-    background: string;
+    background?: string;
     borderRadius?: number;
     width?: number;
     height?: number;
+    id: number;
+    handleDelete: Function
 }
 
 export function DeleteIcon({
-    background,
-    borderRadius,
     width,
-    height }: Props) {
+    height,
+    borderRadius,
+    id,
+    handleDelete }: Props) {
     return (
-        <View style={[styles.deleteIcon, {
-            backgroundColor: background,
-            borderTopRightRadius: borderRadius,
-            borderBottomRightRadius: borderRadius,
-            width: width,
-            height: height,
-        }]} >
+        <BorderlessButton
+            style={{
+                width: width,
+                height: height,
+                borderTopEndRadius: borderRadius,
+                borderBottomEndRadius: borderRadius
+            }}
+        >
             <FontAwesome
                 name="trash-o"
                 size={24}
                 color="black"
+                onPress={() => handleDelete(id)}
             />
-        </View>
+        </BorderlessButton>
     );
 }

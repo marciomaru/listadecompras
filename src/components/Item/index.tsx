@@ -11,8 +11,10 @@ import { styles } from './styles';
 import { TextInput } from 'react-native-gesture-handler';
 import { ModalView } from '../ModalView';
 import { EditItem } from '../EditItem';
-import { ListProvider } from '../../hooks/list';
+import { ListProvider, useList } from '../../hooks/list';
 import { ItemProvider } from '../../hooks/item';
+import { CheckIcon } from '../CheckIcon';
+import { listas } from '../../temporaryDB/TemporaryDB';
 
 
 export type ItemProps = {
@@ -25,16 +27,35 @@ export type ItemProps = {
 
 type Props = PressableProps & {
     data: ItemProps;
+    background: string
 }
 
-export function Item({ data, ...rest }: Props) {
+export function Item({
+    data,
+    background,
+    ...rest }: Props) {
     const { name, quantity, unitaryValue, total, id } = data;
     const [producttext, setProductText] = useState(name);
     const [quantitytext, setQuantityText] = useState(quantity);
-    const [unitaryValeuText, setunitaryValeuText] = useState(unitaryValue);
+    const [unitaryValueText, setUnitaryValueText] = useState(unitaryValue);
     const [totalText, setTotalText] = useState('');
     const [ok, setOk] = useState(false);
     const [openModal, setOpenModal] = useState(false)
+
+    const { list } = useList()
+    const i = list.items[0].items.filter(item => item.id === id)
+
+    useEffect(() => {
+        setProductText(i[0].name)
+    }, [i[0].name])
+
+    useEffect(() => {
+        setQuantityText(i[0].quantity)
+    }, [i[0].quantity])
+
+    useEffect(() => {
+        setUnitaryValueText(i[0].unitaryValue)
+    }, [i[0].unitaryValue])
 
 
     function checkOk() {
@@ -47,14 +68,13 @@ export function Item({ data, ...rest }: Props) {
 
     return (
         <>
+
             <View style={ok ? styles.containerChecked : styles.container}>
                 <View style={{ flexDirection: 'column' }}>
 
                     <View style={styles.detailItemArea}>
-                        <Pressable
+                        <View
                             style={styles.quantityText}
-                            onLongPress={handleOpenModal}
-                            {...rest}
                         >
 
                             <Text
@@ -63,12 +83,12 @@ export function Item({ data, ...rest }: Props) {
                             </Text>
 
 
-                        </Pressable>
+                        </View>
                         <View style={styles.nameText}>
                             <Text>{producttext}</Text>
                         </View>
                         <View style={styles.valueText}>
-                            <Text>R$ {unitaryValeuText}</Text>
+                            <Text>R$ {unitaryValueText}</Text>
                         </View>
 
                     </View >
@@ -83,7 +103,7 @@ export function Item({ data, ...rest }: Props) {
 
                 </View>
 
-                <View style={styles.iconsArea}>
+                {/*<View style={styles.iconsArea}>
 
                     <Feather
                         name="check-circle"
@@ -91,8 +111,16 @@ export function Item({ data, ...rest }: Props) {
                         style={ok ? styles.checked : styles.check}
                         onPress={checkOk}
                     />
-                </View>
+                    {/*<CheckIcon
+                        background={background}
+                        borderRadius={10}
+                    />
+                </View>*/}
 
+            </View>
+
+            <View style={styles.icon} >
+                <CheckIcon />
             </View>
 
             {/*<Modal
@@ -113,7 +141,10 @@ export function Item({ data, ...rest }: Props) {
                 onRequestClose={handleOpenModal}
             >
 
-                <EditItem />
+                <EditItem
+                    itemData={data}
+                    handleModal={handleOpenModal}
+                />
 
             </ModalView>
 

@@ -5,6 +5,7 @@ import {
     Text,
     View
 } from 'react-native';
+import { BorderlessButton } from 'react-native-gesture-handler';
 import { DeleteIcon } from '../DeleteIcon';
 import { EditIcon } from '../EditIcon';
 import { ReturnIcon } from '../ReturnIcon';
@@ -25,24 +26,16 @@ export function Header({
     actionIcons, }: Props) {
     return (
         <View style={[styles.container, { backgroundColor: background }]}>
+
             {
                 actionReturn &&
                 <ReturnIcon />
+
             }
 
-            <Text style={styles.title}>
+            <Text style={styles.title} >
                 {title}
             </Text>
-
-            {
-                actionIcons &&
-                <View style={styles.actionIcons}>
-                    <EditIcon />
-                    <DeleteIcon
-                        background={background}
-                    />
-                </View>
-            }
 
         </View>
     );
