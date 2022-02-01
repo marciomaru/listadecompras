@@ -17,6 +17,7 @@ import { listas } from '../../temporaryDB/TemporaryDB';
 import { ReturnIcon } from '../../components/ReturnIcon';
 import { DeleteIcon } from '../../components/DeleteIcon';
 import { CheckIcon } from '../../components/CheckIcon';
+import { check } from '../../util/CheckItem'
 
 
 
@@ -33,8 +34,7 @@ export function ListDetails() {
     return (
         <>
             <View
-                //style={itemChecked ? styles.item : styles.itemChecked}
-                style={styles.item}
+                style={styles.container}
             >
                 <StatusBar
                     barStyle='dark-content'
@@ -50,19 +50,20 @@ export function ListDetails() {
                     data={items.items}
                     keyExtractor={item => item.id}
                     renderItem={({ item }) => (
-                        <View
-                            style={{
-                                flexDirection: 'row',
-                                borderColor: 'yellow',
-                                borderWidth: 2
-                            }}
-                        >
+                        <View style={styles.item}>
                             <Item
                                 data={item}
                                 background={theme.colors.itemPrimary}
                             />
+                            <View style={styles.icon}>
+                                <CheckIcon
+                                    handleItemChecked={handleCheckItem}
+                                />
+                            </View>
+
                         </View>
                     )}
+                    extraData={itemChecked}
                     ItemSeparatorComponent={() => <ListDivider />}
                 />
             </View>

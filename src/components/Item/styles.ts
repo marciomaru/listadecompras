@@ -5,36 +5,34 @@ import { theme } from '../../global/styles/theme';
 export const styles = StyleSheet.create({
     container: {
         width: 340,
-        height: 70,
+        height: 75,
         flexDirection: 'row',
         justifyContent: 'space-between',
         backgroundColor: '#c9d8e8',
-        alignSelf: 'center',
         alignItems: 'center',
-        borderTopLeftRadius: 10,
-        borderBottomLeftRadius: 10,
+        borderTopStartRadius: 10,
+        borderBottomStartRadius: 10,
     },
     containerChecked: {
-        width: 400,
-        height: 71,
+        width: 340,
+        height: 75,
         flexDirection: 'row',
         justifyContent: 'space-between',
         backgroundColor: '#c9d8e8',
-        alignSelf: 'center',
         alignItems: 'center',
         borderWidth: 3,
         borderColor: 'green',
-        borderRadius: 10,
+        borderTopStartRadius: 10,
+        borderBottomStartRadius: 10,
     },
     Edit: {
         color: 'black',
     },
     check: {
-        opacity: 0.4,
         color: 'gray',
     },
     checked: {
-        color: 'green',
+        color: 'green'
     },
     detailItemArea: {
         width: 320,
@@ -93,7 +91,7 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         width: 50,
-        height: 70,
+        height: 75,
         borderTopEndRadius: 10,
         borderBottomEndRadius: 10
     }

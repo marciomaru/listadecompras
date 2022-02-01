@@ -15,6 +15,7 @@ import { ListProvider, useList } from '../../hooks/list';
 import { ItemProvider } from '../../hooks/item';
 import { CheckIcon } from '../CheckIcon';
 import { listas } from '../../temporaryDB/TemporaryDB';
+import { check } from '../../util/CheckItem'
 
 
 export type ItemProps = {
@@ -27,8 +28,9 @@ export type ItemProps = {
 
 type Props = PressableProps & {
     data: ItemProps;
-    background: string
+    background: string;
 }
+
 
 export function Item({
     data,
@@ -58,18 +60,18 @@ export function Item({
     }, [i[0].unitaryValue])
 
 
-    function checkOk() {
-        ok ? setOk(false) : setOk(true)
-    }
-
     function handleOpenModal() {
         openModal ? setOpenModal(!openModal) : setOpenModal(!openModal)
+    }
+
+    function checkOk() {
+        ok ? setOk(false) : setOk(true)
     }
 
     return (
         <>
 
-            <View style={ok ? styles.containerChecked : styles.container}>
+            <View style={check ? styles.containerChecked : styles.container}>
                 <View style={{ flexDirection: 'column' }}>
 
                     <View style={styles.detailItemArea}>
@@ -103,38 +105,7 @@ export function Item({
 
                 </View>
 
-                {/*<View style={styles.iconsArea}>
-
-                    <Feather
-                        name="check-circle"
-                        size={30}
-                        style={ok ? styles.checked : styles.check}
-                        onPress={checkOk}
-                    />
-                    {/*<CheckIcon
-                        background={background}
-                        borderRadius={10}
-                    />
-                </View>*/}
-
             </View>
-
-            <View style={styles.icon} >
-                <CheckIcon />
-            </View>
-
-            {/*<Modal
-                transparent={true}
-                animationType='none'
-                visible={openModal}
-                onRequestClose={handleOpenModal}
-            >
-                <View style={styles.overlay}>
-                    <View style={styles.container}>
-
-                    </View>
-                </View>
-            </Modal>*/}
 
             <ModalView
                 visible={openModal}
